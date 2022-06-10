@@ -49,14 +49,14 @@ public class UserController {
 	}
 
 	// faz o Map
-	@GetMapping("/users")
+	@GetMapping("users")
 	public String colaboradores(Model model) {
 		model.addAttribute("listUsers", rep.findAll());
 		return "users/index";
 	}
 
 	// Cadastrar usuário
-	@GetMapping("/users/cadastrar")
+	@GetMapping("users/cadastrar")
 	public String cadastrarColaborador(@ModelAttribute("user") User user) {
 		return "users/form";
 	}
@@ -74,7 +74,7 @@ public class UserController {
 	}
 
 	// salvar usuário
-	@PostMapping("/user/salvar")
+	@PostMapping("user/salvar")
 	public String salvarUser(@ModelAttribute("user") User user, @ModelAttribute("item") Item item) {
 		List<User> listAll = rep.findAll();
 		for (User u: listAll) {
@@ -88,7 +88,7 @@ public class UserController {
 	}
 
 	// deletando usuário
-	@GetMapping("/users/remover/{id}")
+	@GetMapping("users/remover/{id}")
 	public String removerUser(@PathVariable("id") long id) {
 		Optional<User> userOpt = rep.findById(id);
 		if (userOpt.isEmpty()) {
